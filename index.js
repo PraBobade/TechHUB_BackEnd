@@ -10,6 +10,8 @@ import ProductRoute from './Routes/ProductRoute.js'
 import BrainTreeRoute from './Routes/BrainTreeRoute.js'
 import ConnectToMongoDB from "./Config/DataBase.js";
 
+const PORT = process.env.PORT || 5002
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -25,4 +27,4 @@ app.use('/api/v1/product', ProductRoute);
 // BrainTree routes
 app.use('/api/v1/', BrainTreeRoute);
 
-app.listen(process.env.PORT || 5002)
+app.listen(PORT)
