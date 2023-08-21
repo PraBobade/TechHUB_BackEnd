@@ -1,5 +1,4 @@
 import express from "express";
-import path from 'path';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: "/.env" });
@@ -16,7 +15,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-ConnectToMongoDB(`mongodb://127.0.0.1:27017/${process.env.MONGO_DATABASE}`);
+
+//For MongoDB Atlas
+
+ConnectToMongoDB();
 
 //Auth Routes 
 app.use('/api/v1/auth', route);
