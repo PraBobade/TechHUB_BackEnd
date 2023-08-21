@@ -8,12 +8,12 @@ const ConnectToMongoDB = async () => {
     const MongoDBAtlasURL = `mongodb+srv://bobadepradip18:H6IxhtekmpXQW62Y@cluster0.s2qirqb.mongodb.net/${DataBase}?retryWrites=true&w=majority`
     try {
         await mongoose.connect(MongoDBAtlasURL).then(() => {
-            console.log("Connected to Database Successfully......!");
+            // console.log("Connected to Database Successfully......!");
         })
     }
     catch (err) {
         console.log("Server is Down, Can't Connect To MongoDB.....!!!!");
-        console.log(err);
+        // console.log(err);
     }
 }
 
