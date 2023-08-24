@@ -13,7 +13,7 @@ export async function SendUserPasswordResetEmail(req, res) {
                 const secert = user._id + process.env.SECRET_KEY
                 const token = jwt.sign({ userID: user._id }, secert, { expiresIn: '5m' })
 
-                const link = `https://techhubserver-ukjt.onrender.com/reset-password/${token}` // Here the Host is the React Host
+                const link = `https://mytechhub.netlify.app/reset-password/${token}` // Here the Host is the React Host
 
                 await transporter.sendMail({
                     from: process.env.EMAIL_FROM,
