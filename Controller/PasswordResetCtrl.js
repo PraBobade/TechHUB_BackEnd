@@ -10,14 +10,14 @@ export async function SendUserPasswordResetEmail(req, res) {
         if (req.body.email) {
             const user = await UserModel.findOne({ email: req.body.email.toLowerCase() });
             if (user) {
-                const secert = user._id + process.env.SECRET_KEY
-                const token = jwt.sign({ userID: user._id }, secert, { expiresIn: '5m' })
+                const secert = user?._id + process.env.SECRET_KEY
+                const token = jwt.sign({ userID: user?._id }, secert, { expiresIn: '5m' })
 
-                const link = `https://techhubserver-ukjt.onrender.com/reset-password/${token}` // Here the Host is the React Host
+                const link = `https://mytechhub.netlify.app/reset-password/${token}` // Here the Host is the React Host
 
                 await transporter.sendMail({
                     from: process.env.EMAIL_FROM,
-                    to: user.email,
+                    to: user?.email,
                     subject: "Password Rest Link",
                     html: `<html lang="en">
                     <head>
