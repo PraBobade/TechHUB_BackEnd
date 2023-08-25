@@ -167,7 +167,7 @@ export async function RelatedCategoryProduct(req, res) {
             {
                 _id: { $ne: ProductID },
                 category: CategoryID,
-                brand: Brand
+                brand: "Samsung"
             }
         ).select('-photo').populate('category').sort({ _id: -1 }).limit(8);
         res.status(200).send({ 'status': "Pass", 'products': Result });
