@@ -163,11 +163,12 @@ export async function SearchProduct(req, res) {
 export async function RelatedCategoryProduct(req, res) {
     try {
         const { ProductID, CategoryID, Brand } = req.params
+        console.log("Params is ", ProductID, CategoryID, Brand);
         const Result = await ProductModel.find(
             {
                 _id: { $ne: ProductID },
                 category: CategoryID,
-                brand: "Samsung"
+                brand: Brand
             }
         ).select('-photo').populate('category').sort({ _id: -1 }).limit(8);
         res.status(200).send({ 'status': "Pass", 'products': Result });
