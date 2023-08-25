@@ -14,7 +14,7 @@ route.get('/single-product/:slug', GetSingleProduct);
 
 route.get('/getCategoryProducts/:CategoryID', CategoryProducts);
 route.post('/filter-product', FilterProduct);
-route.get('/related-product/:CategoryID/:ProductID', RelatedCategoryProduct);
+route.get('/related-product/:CategoryID/:ProductID/:Brand', RelatedCategoryProduct);
 route.get('/search/:keyword', SearchProduct);
 
 export default route;

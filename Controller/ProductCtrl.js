@@ -162,8 +162,14 @@ export async function SearchProduct(req, res) {
 
 export async function RelatedCategoryProduct(req, res) {
     try {
-        const { ProductID, CategoryID } = req.params
-        const Result = await ProductModel.find({ _id: { $ne: ProductID }, category: CategoryID }).select('-photo').populate('category').sort({ _id: -1 }).limit(8);
+        const { ProductID, CategoryID, Brand } = req.params
+        const Result = await ProductModel.find(
+            {
+                _id: { $ne: ProductID },
+                category: CategoryID,
+                brand: Brand
+            }
+        ).select('-photo').populate('category').sort({ _id: -1 }).limit(8);
         res.status(200).send({ 'status': "Pass", 'products': Result });
     } catch (error) {
         res.send({ 'status': 'Fail', 'message': 'Error in Related Product Category Functionality', error: error.message })
